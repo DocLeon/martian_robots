@@ -1,8 +1,8 @@
 class Position
   attr_reader :x_coordinate
   attr_reader :y_coordinate
-  def self.from(instructions_sent)
-    Position.new(instructions_sent[1][0].split(' '), instructions_sent[2][0])
+  def self.from(start_position,movements)
+    Position.new(start_position, movements)
   end
 
   def initialize(co_ords, movements)
@@ -24,12 +24,14 @@ class Position
 end
 
 class CommandCentre
-  def send(instructions)
-    @final_position = Position.from(instructions)
+  def send(instructions_sent)
+    start_position = instructions_sent[1][0].split(' ')
+    movements = instructions_sent[2][0]
+    @final_position = Position.from(start_position,movements)
   end
 
   def output
-    return "#{@final_position}"
+    "#{@final_position}"
   end
 
 end

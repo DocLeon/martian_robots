@@ -4,9 +4,10 @@ class CommandCentre
   end
 
   def output
-    return "1 1 S" if @instructions[2][0] == "R"
-    return "1 1 N" if @instructions[2][0] == "L"
-    return "1 1 W" if @instructions[2][0] == "RR"
+    movement = @instructions[2][0]
+    return "1 1 S" if movement == "R"
+    return "1 1 N" if movement == "L"
+    return "1 1 W" if movement == "RR"
     "1 1 E"
   end
 end

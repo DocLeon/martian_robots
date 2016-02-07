@@ -4,7 +4,8 @@ class CommandCentre
   end
 
   def output
-    return "1 1 E" if @instructions[2][0].empty?
-    "1 1 S"
+    return "1 1 S" if @instructions[2][0] == "R"
+    return "1 1 N" if @instructions[2][0] == "L"
+    "1 1 E"
   end
 end

@@ -26,6 +26,10 @@ class CommandCentre
     return "#{position} #{position_after_movement(movement)}"
   end
 
+  def movement_from(instuctions)
+    instructions[2][0]
+  end
+
   def position_after_movement(movement)
     return "S" if movement == "R"
     return "N" if movement == "L"

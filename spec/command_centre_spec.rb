@@ -24,6 +24,20 @@ describe CommandCentre do
         expect(command_centre.output).to eq("1 1 N")
       end
     end
+
+    context '1 robot in fleet, receives LR command' do
+      it 'reports back robot is facing south' do
+        command_centre.send([["5 3"],["1 1 E"],["LR"]])
+        expect(command_centre.output).to eq("1 1 E")
+      end
+    end
+
+    context '1 robot in fleet, receives RR command' do
+      it 'reports back robot is facing south' do
+        command_centre.send([["5 3"],["1 1 E"],["RR"]])
+        expect(command_centre.output).to eq("1 1 W")
+      end
+    end
   end
 
 end

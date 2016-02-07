@@ -9,6 +9,4 @@ Scenario: Send instructions to one robot
   |5 3|
   |1 1 E|
   |RFRFRFRF|
-  Then I should receive:
-  |1 1 E|
-  |3 3 N LOST|
+  Then I should receive "1 1 E"

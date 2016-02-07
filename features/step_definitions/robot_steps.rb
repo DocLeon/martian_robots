@@ -1,11 +1,4 @@
-class CommandCentre
-  def send(instructions)
-  end
-
-  def output
-    [["1 1 E"],["3 3 N LOST"]]
-  end
-end
+require File.join(File.dirname(__FILE__),'..','..','lib','command_centre')
 
 Given(/^I have a robot on Mars$/) do
   @command_centre = CommandCentre.new()

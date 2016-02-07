@@ -1,5 +1,3 @@
-require File.join(File.dirname(__FILE__),'..','..','lib','command_centre')
-
 Given(/^I have a robot on Mars$/) do
   @command_centre = CommandCentre.new()
 end

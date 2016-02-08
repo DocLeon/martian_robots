@@ -13,7 +13,8 @@ describe RobotPosition do
        ['W','L','S'],
        ['W','LL','E']]
       .each do |start_orientation,movement,end_orientation|
-        position = RobotPosition.new(['1','1',start_orientation],movement)
+        position = RobotPosition.new(['1','1',start_orientation])
+        position.move(movement)
         expect(position.to_s).to eq("1 1 #{end_orientation}")
       end
     end
@@ -23,14 +24,15 @@ describe RobotPosition do
        ['W','0 1 W'],
        ['E','2 1 E']]
       .each do |start_orientation,final_position|
-        position = RobotPosition.new(['1','1',start_orientation],'F')
+        position = RobotPosition.new(['1','1',start_orientation])
         position.move('F')
         expect(position.to_s).to eq(final_position)
       end
 
     end
     it "from 1 1 it moves forward and rotates when instructed" do
-      position = RobotPosition.new(['1','1','N'],'RF')
+      position = RobotPosition.new(['1','1','N'])
+      position.move('RF')
       expect(position.to_s).to eq('2 1 E')
     end
   end

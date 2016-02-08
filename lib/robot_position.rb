@@ -1,9 +1,8 @@
 class RobotPosition
-  def initialize(start_position, movements)
+  def initialize(start_position)
     @x_coordinate = start_position[0]
     @y_coordinate = start_position[1]
     @orientation = start_position[2]
-    move(movements)
   end
 
   def move(movement)

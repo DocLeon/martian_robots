@@ -10,7 +10,8 @@ describe Position do
        ['S','R','W'],
        ['S','L','E'],
        ['W','R','N'],
-       ['W','L','S']]
+       ['W','L','S'],
+       ['W','LL','E']]
       .each do |start_orientation,movement,end_orientation|
         position = Position.new(['1','1',start_orientation],movement)
         expect(position.to_s).to eq("1 1 #{end_orientation}")

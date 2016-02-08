@@ -28,5 +28,9 @@ describe Position do
       end
 
     end
+    it "from 1 1 it moves forward and rotates when instructed" do
+      position = Position.new(['1','1','N'],'RF')
+      expect(position.to_s).to eq('2 1 E')
+    end
   end
 end

@@ -1,6 +1,4 @@
 class Position
-  attr_reader :x_coordinate
-  attr_reader :y_coordinate
   def self.from(start_position,movements)
     Position.new(start_position, movements)
   end

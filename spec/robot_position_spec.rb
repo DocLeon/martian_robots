@@ -24,6 +24,7 @@ describe RobotPosition do
        ['E','2 1 E']]
       .each do |start_orientation,final_position|
         position = RobotPosition.new(['1','1',start_orientation],'F')
+        position.move('F')
         expect(position.to_s).to eq(final_position)
       end
 

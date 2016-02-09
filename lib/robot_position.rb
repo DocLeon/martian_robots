@@ -37,7 +37,10 @@ class RobotPosition
       @x_coordinate = @grid[0].to_i
       @orientation = "#{@orientation} LOST"
       #mark position in grid 'ghost'
-      #check for < 0
+    end
+    if @x_coordinate < 0
+      @x_coordinate = 0
+      @orientation = "#{@orientation} LOST"
     end
   end
 

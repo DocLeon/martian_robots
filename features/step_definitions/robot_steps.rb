@@ -3,7 +3,11 @@ Given(/^I have (?:a )?robot(?:s)? on Mars$/) do
 end
 
 When(/^I send these instructions:$/) do |instructions|
-  @command_centre.send(instructions.raw)
+  commands = []
+  instructions.raw.each do |instruction|
+    commands << instruction[0]
+  end
+  @command_centre.send(commands)
 end
 
 Then(/^I should receive:$/) do |expected_output|

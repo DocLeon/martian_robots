@@ -9,11 +9,13 @@ class RobotPosition
   def move(movement)
     compass_points = ['N','E','S','W']
     movement.each_char do |movement|
-      adjustment = orientation_adjustment_from movement
-      final_compass_index = compass_points.index(@orientation) + adjustment
-      final_compass_index = 0 if final_compass_index > 3
-      @orientation = compass_points[final_compass_index]
-      move_forward(@orientation) if movement == 'F'
+      if @orientation.include? 'LOST'
+        adjustment = orientation_adjustment_from movement
+        final_compass_index = compass_points.index(@orientation) + adjustment
+        final_compass_index = 0 if final_compass_index > 3
+        @orientation = compass_points[final_compass_index]
+        move_forward(@orientation) if movement == 'F'
+      end
     end
   end
 
@@ -25,10 +27,14 @@ class RobotPosition
     if @y_coordinate > @grid[1].to_i
       @y_coordinate = @grid[1].to_i
       @orientation = "#{@orientation} LOST"
+      #mark position in grid 'ghost'
+      #check for < 0
     end
     if @x_coordinate > @grid[0].to_i
       @x_coordinate = @grid[0].to_i
       @orientation = "#{@orientation} LOST"
+      #mark position in grid 'ghost'
+      #check for < 0
     end
   end
 

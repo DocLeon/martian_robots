@@ -38,7 +38,7 @@ describe RobotPosition do
     it "moves off 0 0 robot is lost" do
       position = RobotPosition.new(['0','0','S'],['5','3'])
       position.move('F')
-      expect(position.to_s).to eq('0 0 E LOST')
+      expect(position.to_s).to eq('0 0 S LOST')
     end
     context "small 1 1 grid" do
       it "from 1 1 it moves forward and is lost" do

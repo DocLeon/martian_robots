@@ -9,7 +9,7 @@ class RobotPosition
   def move(movement)
     compass_points = ['N','E','S','W']
     movement.each_char do |movement|
-      if @orientation.include? 'LOST'
+      if !@orientation.include? 'LOST'
         adjustment = orientation_adjustment_from movement
         final_compass_index = compass_points.index(@orientation) + adjustment
         final_compass_index = 0 if final_compass_index > 3

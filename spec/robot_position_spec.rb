@@ -13,7 +13,7 @@ describe RobotPosition do
        ['W','L','S'],
        ['W','LL','E']]
       .each do |start_orientation,movement,end_orientation|
-        position = RobotPosition.new(['1','1',start_orientation])
+        position = RobotPosition.new(['1','1',start_orientation],['5','3'])
         position.move(movement)
         expect(position.to_s).to eq("1 1 #{end_orientation}")
       end
@@ -24,16 +24,23 @@ describe RobotPosition do
        ['W','0 1 W'],
        ['E','2 1 E']]
       .each do |start_orientation,final_position|
-        position = RobotPosition.new(['1','1',start_orientation])
+        position = RobotPosition.new(['1','1',start_orientation],['5','3'])
         position.move('F')
         expect(position.to_s).to eq(final_position)
       end
 
     end
     it "from 1 1 it moves forward and rotates when instructed" do
-      position = RobotPosition.new(['1','1','N'])
+      position = RobotPosition.new(['1','1','N'],['5','3'])
       position.move('RF')
       expect(position.to_s).to eq('2 1 E')
+    end
+    context "small 1 1 grid" do
+      it "from 1 1 it moves forward and is lost" do
+        position = RobotPosition.new(['1','1','N'],['1','1'])
+        position.move('F')
+        expect(position.to_s).to eq('1 1 N LOST')
+      end
     end
   end
 end

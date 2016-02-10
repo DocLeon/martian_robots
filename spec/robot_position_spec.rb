@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe RobotPosition do
-  describe '#to_s' do
+  describe '#move' do
     it "is orientated correctly when rotated" do
       [['N','R','E'],
        ['N','L','W'],
@@ -47,9 +47,16 @@ describe RobotPosition do
     end
     context "small 1 1 grid" do
       it "from 1 1 it moves forward and is lost" do
-        position = RobotPosition.new(['1','1','N'],['1','1'])
+        position = RobotPosition.new(['1','1','N'],Grid.new(1,1))
         position.move('F')
         expect(position.to_s).to eq('1 1 N LOST')
+      end
+      it "marks scent when lost" do
+        grid = double()
+        allow(grid).to receive(:[]) {1}
+        expect(grid).to receive(:mark).with([1,1])
+        position = RobotPosition.new(['1','1','N'],grid)
+        position.move('F')
       end
     end
   end

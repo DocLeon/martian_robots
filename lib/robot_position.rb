@@ -1,3 +1,16 @@
+class Grid
+  def initialize(width, height)
+    @width = width
+    @height = height
+  end
+  def mark(position)
+  end
+  def [](position)
+    return @width if position = 0
+    return @height
+  end
+end
+
 class RobotPosition
   def initialize(start_position, grid)
     @x_coordinate = start_position[0].to_i
@@ -27,7 +40,7 @@ class RobotPosition
     if @y_coordinate > @grid[1].to_i
       @y_coordinate = @grid[1].to_i
       @orientation = "#{@orientation} LOST"
-      #mark position in grid 'ghost'
+      @grid.mark([@x_coordinate,@y_coordinate])
     end
     if @y_coordinate < 0
       @y_coordinate = 0

@@ -2,10 +2,9 @@ require 'robot_position'
 
 class CommandCentre
   def send(instructions_sent)
-    #change instructions to string array not 2D array
     robot_instructions_start = 1
     grid_size = instructions_sent[0].split(' ')
-    grid = Grid.new(grid_size[0],grid_size[1])
+    grid = Grid.new(grid_size[0].to_i,grid_size[1].to_i)
     @robot_positions = []
      while robot_instructions_start < instructions_sent.count do
        instructions = instructions_sent[robot_instructions_start,2]

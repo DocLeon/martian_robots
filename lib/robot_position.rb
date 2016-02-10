@@ -1,4 +1,4 @@
-require 'Grid'
+require 'grid'
 
 class RobotPosition
   def initialize(start_position, grid)

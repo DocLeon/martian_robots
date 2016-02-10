@@ -1,18 +1,4 @@
-class Grid
-  def initialize(width, height)
-    @width = width
-    @height = height
-  end
-  def mark(position)
-  end
-  def [](position)
-    return @width if position = 0
-    return @height
-  end
-  def is_not_scented?(position)
-    true
-  end
-end
+require 'Grid'
 
 class RobotPosition
   def initialize(start_position, grid)

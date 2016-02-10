@@ -26,8 +26,8 @@ class RobotPosition
     @y_coordinate -= 1 if orientation == 'S'
     @x_coordinate -= 1 if orientation == 'W'
     @x_coordinate += 1 if orientation == 'E'
-    if @y_coordinate > @grid[1].to_i
-      @y_coordinate = @grid[1].to_i
+    if @y_coordinate > @grid.max_y
+      @y_coordinate = @grid.max_y
       if @grid.is_not_scented?([@x_coordinate,@y_coordinate])
         @orientation = "#{@orientation} LOST"
         @grid.mark([@x_coordinate,@y_coordinate])
@@ -35,10 +35,13 @@ class RobotPosition
     end
     if @y_coordinate < 0
       @y_coordinate = 0
-      @orientation = "#{@orientation} LOST"
+      if @grid.is_not_scented?([@x_coordinate,@y_coordinate])
+        @orientation = "#{@orientation} LOST"
+        @grid.mark([@x_coordinate,@y_coordinate])
+      end
     end
-    if @x_coordinate > @grid[0].to_i
-      @x_coordinate = @grid[0].to_i
+    if @x_coordinate > @grid.max_x
+      @x_coordinate = @grid.max_x
       if @grid.is_not_scented?([@x_coordinate,@y_coordinate])
         @orientation = "#{@orientation} LOST"
         @grid.mark([@x_coordinate,@y_coordinate])
@@ -46,7 +49,10 @@ class RobotPosition
     end
     if @x_coordinate < 0
       @x_coordinate = 0
-      @orientation = "#{@orientation} LOST"
+      if @grid.is_not_scented?([@x_coordinate,@y_coordinate])
+        @orientation = "#{@orientation} LOST"
+        @grid.mark([@x_coordinate,@y_coordinate])
+      end
     end
   end
 

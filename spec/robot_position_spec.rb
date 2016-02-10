@@ -53,7 +53,8 @@ describe RobotPosition do
       end
       it "marks scent when lost" do
         grid = double()
-        allow(grid).to receive(:[]) {1}
+        allow(grid).to receive(:max_x) {1}
+        allow(grid).to receive(:max_y) {1}
         allow(grid).to receive(:is_not_scented?) {true}
         expect(grid).to receive(:mark).with([1,1])
         position = RobotPosition.new(['1','1','N'],grid)
@@ -61,7 +62,8 @@ describe RobotPosition do
       end
       it "checks for scent before getting lost" do
         grid = double()
-        allow(grid).to receive(:[]) {1}
+        allow(grid).to receive(:max_x) {1}
+        allow(grid).to receive(:max_y) {1}
         expect(grid).to receive(:is_not_scented?).with([1,1])
         position = RobotPosition.new(['1','1','N'],grid)
         position.move('F')

@@ -54,7 +54,15 @@ describe RobotPosition do
       it "marks scent when lost" do
         grid = double()
         allow(grid).to receive(:[]) {1}
+        allow(grid).to receive(:is_not_scented?) {true}
         expect(grid).to receive(:mark).with([1,1])
+        position = RobotPosition.new(['1','1','N'],grid)
+        position.move('F')
+      end
+      it "checks for scent before getting lost" do
+        grid = double()
+        allow(grid).to receive(:[]) {1}
+        expect(grid).to receive(:is_not_scented?).with([1,1])
         position = RobotPosition.new(['1','1','N'],grid)
         position.move('F')
       end

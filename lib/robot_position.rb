@@ -9,6 +9,9 @@ class Grid
     return @width if position = 0
     return @height
   end
+  def is_not_scented?(position)
+    true
+  end
 end
 
 class RobotPosition
@@ -39,8 +42,10 @@ class RobotPosition
     @x_coordinate += 1 if orientation == 'E'
     if @y_coordinate > @grid[1].to_i
       @y_coordinate = @grid[1].to_i
-      @orientation = "#{@orientation} LOST"
-      @grid.mark([@x_coordinate,@y_coordinate])
+      if @grid.is_not_scented?([@x_coordinate,@y_coordinate])
+        @orientation = "#{@orientation} LOST"
+        @grid.mark([@x_coordinate,@y_coordinate])
+      end
     end
     if @y_coordinate < 0
       @y_coordinate = 0
@@ -48,8 +53,10 @@ class RobotPosition
     end
     if @x_coordinate > @grid[0].to_i
       @x_coordinate = @grid[0].to_i
-      @orientation = "#{@orientation} LOST"
-      #mark position in grid 'ghost'
+      if @grid.is_not_scented?([@x_coordinate,@y_coordinate])
+        @orientation = "#{@orientation} LOST"
+        @grid.mark([@x_coordinate,@y_coordinate])
+      end
     end
     if @x_coordinate < 0
       @x_coordinate = 0

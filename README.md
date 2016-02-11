@@ -1,9 +1,19 @@
 # martian_robots
 
-TO DO
-Initialize grid and give to robot position
-Mark position as LOST if robot falls off grid
-Mark grid position if robot is LOST
-Multiple robots
+### To run
 
-Robot is LOST midway through movements
+The repository includes a cucumber feature that executes the sample input and output provided.
+There are also a suite of rspec specifications.
+
+To run the features and specification, from the root project directory:
+
+ ```shell
+bundle install
+cucumber
+rspec
+```
+
+###To do
+
+* Turn into a console app to take input from a user
+* Refactor core logic in RobotPosition class, the main move method and especially the move_forward method are too long and procedural..
